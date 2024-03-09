@@ -12,7 +12,7 @@ document.getElementById('class').addEventListener('input', (e) => {
     }
 });*/
 document.getElementById('startBtn').addEventListener('click', () => {
-    if (document.getElementById('name').value.length < document.getElementById('name').minLength) {
+    if (document.getElementById('name').value.split(' ').length < 2) {
         alert('Имя указано неправильно!');
         return;
     }
@@ -22,7 +22,7 @@ document.getElementById('startBtn').addEventListener('click', () => {
     }
     localStorage.setItem('name', document.getElementById('name').value.replace(/<\/?[^>]+(>|$)/g, ''));
     localStorage.setItem('class', document.getElementById('class').value.replace(/<\/?[^>]+(>|$)/g, ''));
-    window.location.href = window.location.origin;
+    window.location.href = window.location.href.split('/').splice(0, window.location.href.split('/').length - 1).join('/');
 });
 
 function trueName() {

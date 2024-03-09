@@ -182,7 +182,7 @@ document.getElementById('send').addEventListener('click', () => {
     //console.log(selectedObjs.map(x => info[parseInt(x.classList[0])]));
     document.getElementById('modal2').style.display = 'block';
     document.body.style.overflow = 'hidden';
-    document.querySelector('.modal-content-2 p').innerHTML = 'Вы будете проверять знания по: ' + getSelected().join(' регион, ') + ' регион?';
+    document.querySelector('.modal-content-2 p').innerHTML = 'Вы выбрали ' + getSelected().join(' регион, ') + ' регион?';
 });
 document.getElementById('rand').addEventListener('click', () => {
     Array.from(document.getElementsByClassName('selected')).forEach((val) => {
@@ -202,7 +202,7 @@ Array.from(document.getElementsByClassName('close2')).forEach((val) => {
         document.body.style.overflow = '';
         questions = [];
         questionsAnswered = new Map();
-        document.querySelectorAll('input[type=radio]:checked').checked = false;
+        if (document.querySelector('input[type=radio]:checked') != null) document.querySelector('input[type=radio]:checked').checked = false;
         questionID = 1;
         questionsCount = 0;
         rightAnswered = 0;
@@ -211,6 +211,10 @@ Array.from(document.getElementsByClassName('close2')).forEach((val) => {
         impossibleQuestions = [];
         //region = 0;
         //dost = 0;
+
+        document.getElementById('previousBtn').disabled = true;
+        document.getElementById('nextBtn').disabled = false;
+        document.getElementById('summitBtn').disabled = true;
 
         document.getElementById('defaultInfo').className = '';
         document.getElementById('questionInfo').className = 'hidden';
@@ -289,6 +293,8 @@ function getGrade(ratio) {
 
 document.querySelectorAll('input[type=radio]').forEach((elem) => {
     elem.addEventListener('change', () => {
+        if (!document.getElementsByClassName('point')[questionID - 1].classList.contains('answered'))
+            document.getElementsByClassName('point')[questionID - 1].classList.add('answered');
         questionsAnswered.set(questionID - 1, getSelectedRadio());
         document.getElementById('summitBtn').disabled = questionsAnswered.size != questions.length;
         console.log(questionsAnswered.size);
@@ -545,7 +551,7 @@ function generateQuestion() {
         case 4:
             dost = Math.floor(Math.random() * 2);
             prop_idx = -dost;
-            return ['Что из нижеперечисленного находиться в ' + getSelected()[region] + ' федеральном округе?', shuffle([dostoprimechatelnosti[first][dost], dostoprimechatelnosti[getSelectedIdx()[region]][dost], dostoprimechatelnosti[second][dost]]), getSelectedIdx()[region], prop_idx/*, 2*/];
+            return ['Что из нижеперечисленного находится в ' + getSelected()[region] + ' федеральном округе?', shuffle([dostoprimechatelnosti[first][dost], dostoprimechatelnosti[getSelectedIdx()[region]][dost], dostoprimechatelnosti[second][dost]]), getSelectedIdx()[region], prop_idx/*, 2*/];
         case 5:
             prop_idx = 5;
             return ['Какой климат в ' + getSelected()[region] + ' округе?', shuffle([info[first][5], info[getSelectedIdx()[region]][5], info[second][5]]), getSelectedIdx()[region], 5/*, 0*/];
