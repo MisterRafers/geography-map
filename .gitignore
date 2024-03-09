@@ -1,0 +1,5 @@
+*.zip
+.vscode/
+elec school/
+[0-9].png
+project/

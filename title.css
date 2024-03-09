@@ -1,0 +1,43 @@
+* {
+    margin-left: 0;
+}
+details * {
+    margin: 0;
+}
+
+#instruction {
+    display: flex;
+    text-align: center;
+}
+.inst {
+    background-color: rgba(240, 248, 255, 0.3);
+    border-radius: 20px;
+}
+#instruction :last-child {
+    display: block;
+}
+
+#class {
+    width: 47.5px;
+}
+
+#title {
+    text-align: center;
+}
+
+#fact {
+    display: flex;
+    justify-content: center;
+    /*align-items: center;*/
+}
+
+body {
+    background: no-repeat linear-gradient(
+        rgba(0, 0, 0, 0.25),
+        rgba(0, 0, 0, 0.25)
+      ), url('bg.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+}

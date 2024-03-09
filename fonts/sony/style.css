@@ -1,0 +1,6 @@
+@font-face {
+  font-family: 'sonyrusbyme';
+  src: url(./sonyrusbyme.ttf) format('truetype'),
+       url(./sonyrusbyme.woff) format('woff'),
+       url(./sonyrusbyme.woff2) format('woff2');
+}

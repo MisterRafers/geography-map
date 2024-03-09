@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'TroubleSide';
+    src: url('TroubleSide.woff2') format('woff2'),
+        url('TroubleSide.woff') format('woff'),
+        url('TroubleSide.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

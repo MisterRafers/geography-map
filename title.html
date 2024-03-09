@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Титульная страница</title>
+    <style id="instructions"></style>
+    <link rel="stylesheet" href="norm.css">
+    <link rel="stylesheet" href="title.css">
+</head>
+<body style="--child-id: 2;">
+    <div id="container">
+        <div id="title">
+            <p style="font-size: 3.3em;">Интерактивная карта России</p>
+        </div>
+        <fаorm style="display: flex; gap: 6px; flex-flow: row wrap; justify-content: center;" onsubmit='window.location.href = "http://127.0.0.1:5500/index.html";'>
+            <input type="submit" id="startBtn" style="font-size: 1.2em; flex: 1" value="Начать" />
+            <input type="button" value="Инструкция" onclick="changeInstruction(1)" style="font-size: 1.2em; flex: 1" />
+            <!--- maxlength="50" -->
+            <input type="text" name="name" id="name" required autocomplete="off"  minlength="15" placeholder="Введите имя..." style="font-size: 1.2em; flex: 2">
+            <input type="text" name="class" id="class" required autocomplete="off" maxlength="3" minlength="2" placeholder="Класс" style="font-size: 1.2em; flex: 2">
+        </fаorm>
+
+        <details open>
+            <summary style="color: lightgray">Скрыть/показать</summary>
+            <div>
+                <h2 style="color: lightgray">Интересный факт: <p id="fact" style="color: black; font-size: 1.12em; overflow-wrap: normal; word-break: break-word; max-width: 75%; min-height: 9vh; background: rgba(240, 248, 255, 0.6); border-radius: 0 10px 10px 0;"></p></h2>
+                <button id="nextFact" style="font-size: 1.15em;">Следующий факт</button>
+            </div>
+        </details>
+    </div>
+    <div id="instruction" style="display: none;">
+        <div class="inst">
+            <h1>Для того, чтобы ознакомиться с определённым элементом на карте, нажмите на него <i>правой кнопкой мыши</i></h1>
+            <h3>У вас должно открыться окно</h3>
+        </div>
+        <div class="inst">
+            <h1>Помимо просмотра информации, на сайте есть <b>Режим тестирования</b></h1>
+            <h3>Чтобы войти в него, вам нужно выбрать округа <i>(shift + правая кнопка мыши) или удержание пальца</i></h3>
+        </div>
+        <div class="inst">
+            <h1>После этого, нажмите на кнопку "<b>Начать тестирование</b>"</h1>
+            <h3>И затем, нажмите "<i>Начать</i>"</h3>
+        </div>
+        <div class="inst">
+            <h1>Это вся инструкция.</h3>
+            <h3>Удачной работы!</h3>
+        </div>
+        <div style="display: flex; gap: 6px; flex-flow: row wrap; justify-content: center;">
+            <button id="nextInstruction" onclick="nextInstruction()" style="font-size: 1em;">Дальше</button>
+            <button id="stopInstruction" onclick="changeInstruction(0)" style="font-size: 1em;">Завершить инструкцию</button>
+        </div>
+    </div>
+
+    <script src="title.js"></script>
+</body>
+</html>
