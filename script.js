@@ -213,6 +213,8 @@ Array.from(document.getElementsByClassName('close2')).forEach((val) => {
         //dost = 0;
 
         Array.from(document.getElementsByClassName('answered')).forEach((v) => v.classList.remove('answered'));
+        document.getElementsByClassName('current')[0].classList.remove('current');
+        document.getElementsByClassName('point')[0].classList.add('current');
         document.getElementById('previousBtn').disabled = true;
         document.getElementById('nextBtn').disabled = false;
         document.getElementById('summitBtn').disabled = true;
@@ -245,8 +247,16 @@ for (let i = 0; i < document.getElementById('points').childElementCount; i++) {
         document.getElementById('opt1l').innerHTML = val[1][0];
         document.getElementById('opt2l').innerHTML = val[1][1];
         document.getElementById('opt3l').innerHTML = val[1][2];
+        if (document.getElementsByClassName('current').length != 0) document.getElementsByClassName('current')[0].classList.remove('current');
         questionID = i + 1;
+        document.getElementById('points').children[i].classList.add('current');
         document.getElementById('answerStreak').innerText = questionID + '/' + questionsCount + String.fromCharCode(160);
+
+        if (questionsAnswered.has(questionID - 1)) {
+            document.querySelectorAll('input[type=radio]')[questionsAnswered.get(questionID - 1)].checked = true;
+        } else if (document.querySelector('input[type=radio]:checked') != null) {
+            document.querySelector('input[type=radio]:checked').checked = false;
+        }
     })
 }
 document.getElementById('nextBtn').addEventListener('click', () => {
@@ -259,7 +269,9 @@ document.getElementById('nextBtn').addEventListener('click', () => {
     /*if (document.querySelector('input[type=radio]:checked') != null)
         questionsAnswered.set(questionID - 1, getSelectedRadio());*/
     document.getElementById('summitBtn').disabled = questionsAnswered.size != questions.length;
+    if (document.getElementsByClassName('current').length != 0) document.getElementsByClassName('current')[0].classList.remove('current');
     questionID += 1;
+    document.getElementsByClassName('point')[questionID - 1].classList.add('current');
     //console.log(val);
     document.getElementById('questionTitle').innerHTML = val[0];
     document.getElementById('opt1l').innerHTML = val[1][0];
@@ -399,7 +411,9 @@ document.getElementById('previousBtn').addEventListener('click', () => {
     /*if (document.querySelector('input[type=radio]:checked') != null)
         questionsAnswered.set(questionID - 1, getSelectedRadio());*/
     document.getElementById('summitBtn').disabled = questionsAnswered.size != questions.length;
+    if (document.getElementsByClassName('current').length != 0) document.getElementsByClassName('current')[0].classList.remove('current');
     questionID -= 1;
+    document.getElementsByClassName('point')[questionID - 1].classList.add('current');
     //console.log(val);
     document.getElementById('questionTitle').innerHTML = val[0];
     document.getElementById('opt1l').innerHTML = val[1][0];

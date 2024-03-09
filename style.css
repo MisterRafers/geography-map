@@ -86,7 +86,10 @@
     background: lightgreen;
 }
 .point.current {
-    background-color: lightgoldenrodyellow;
+    background-color: #FFF86B;
+}
+.point.current.answered {
+    background-color: #C9FF6B;
 }
 .point:hover {
     cursor: pointer;
