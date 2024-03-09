@@ -85,6 +85,9 @@
 .point.answered {
     background: lightgreen;
 }
+.point.current {
+    background-color: lightgoldenrodyellow;
+}
 .point:hover {
     cursor: pointer;
 }

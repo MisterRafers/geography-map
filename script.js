@@ -212,6 +212,7 @@ Array.from(document.getElementsByClassName('close2')).forEach((val) => {
         //region = 0;
         //dost = 0;
 
+        Array.from(document.getElementsByClassName('answered')).forEach((v) => v.classList.remove('answered'));
         document.getElementById('previousBtn').disabled = true;
         document.getElementById('nextBtn').disabled = false;
         document.getElementById('summitBtn').disabled = true;
@@ -277,10 +278,10 @@ function getGrade(ratio) {
     if (ratio < 0.2) {
         return 1;
     }
-    if (ratio >= 0.2 && ratio <= 0.41) {
+    if (ratio >= 0.2 && ratio <= 0.4) {
         return 2;
     }
-    if (ratio > 0.41 && ratio <= 0.65) {
+    if (ratio > 0.4 && ratio <= 0.65) {
         return 3;
     }
     if (ratio > 0.65 && ratio <= 0.85) {
@@ -309,10 +310,38 @@ document.getElementById('summitBtn').addEventListener('click', () => {
 
     let correct = 0;
     questionsAnswered.forEach((val, key) => {
-        if (questions[key][1][val] == info[questions[key][2]][questions[key][3]]) {
-            correct++;
+        switch (questions[key][4]) {
+            case 0:
+                if (questions[key][1][val].toString().replace(/\s/g, '') == info[questions[key][2]][questions[key][3]].toString().replace(/\s/g, '')) {
+                    /*console.group();
+                    console.log(questions[key][1][val].toString().replace(/\s/g, ''));
+                    console.log(info[questions[key][2]][questions[key][3]].toString().replace(/\s/g, ''));
+                    console.groupEnd();*/
+                    correct++;
+                }
+                break;
+            case 1:
+                if (questions[key][1][val].toString().replace(/\s/g, '') == dostoprimechatelnosti[questions[key][2]][-questions[key][3]].toString().replace(/\s/g, '')) {
+                    /*console.group();
+                    console.log(questions[key][1][val].toString().replace(/\s/g, ''));
+                    console.log(dostoprimechatelnosti[questions[key][2]][-questions[key][3]].toString().replace(/\s/g, ''));
+                    console.groupEnd();*/
+                    correct++;
+                }
+                break;
+            case 2:
+                if (dostoprimechatelnosti[questions[key][2]].indexOf(questions[key][1][val]) != -1) {
+                    /*console.group();
+                    console.log(dostoprimechatelnosti[questions[key][2]]);
+                    console.log(questions[key][1][val]);
+                    console.groupEnd();*/
+                    correct++;
+                }
+                break;
         }
     });
+    console.log(correct);
+    console.log(questionsCount);
 
     document.getElementById('grade').innerHTML = 'Оценка: ' + getGrade(correct / questionsAnswered.size);
 
@@ -391,6 +420,7 @@ document.getElementById('previousBtn').addEventListener('click', () => {
     answered = true;
     //questionsAnswered += 1;
     // ToDo: POPRAVIT BARANU
+    //!!!!!!!!!!!!!!!!!
     document.getElementById('answerStreak').innerText = questionID + '/' + questionsCount + String.fromCharCode(160);
     switch (questions[questionID - 1][4]) {
         case 0:
@@ -499,7 +529,7 @@ var lastGen = new Map();
 var impossibleQuestions = [];
 let lastQuestion = -1; // чтоб было более приятно смотреть
 function generateQuestion() {
-    let r = randNum(6, impossibleQuestions.concat([lastQuestion]));
+    let r = randNum(6, impossibleQuestions.concat([lastQuestion]).concat(getSelected().length == 1 ? [0] : []));
     if (lastGen.has(r)) {
         var a = lastGen.get(r);
         region = randNum(getSelected().length, a);
@@ -538,23 +568,24 @@ function generateQuestion() {
     switch (r) {
         default: // case 0
             prop_idx = 0;
-            return ['В каком федеральном округе находится ' + dostoprimechatelnosti[region][dost] + '?', shuffle([info[first][0], info[getSelectedIdx()[region]][0], info[second][1]]), getSelectedIdx()[region], 0/*, 1*/];
+            dost = Math.floor(Math.random() * 3);
+            return ['В каком федеральном округе находится ' + dostoprimechatelnosti[getSelectedIdx()[region]][dost] + '?', shuffle([info[first][0], info[getSelectedIdx()[region]][0], info[second][1]]), getSelectedIdx()[region], 0, 1];
         case 1:
             prop_idx = 1;
-            return ['Какая столица у ' + getSelected()[region] + ' округа?', shuffle([info[first][1], info[getSelectedIdx()[region]][1], info[second][1]]), getSelectedIdx()[region], 1/*, 0*/];
+            return ['Какая столица у ' + getSelected()[region] + ' округа?', shuffle([info[first][1], info[getSelectedIdx()[region]][1], info[second][1]]), getSelectedIdx()[region], 1, 0];
         case 2:
             prop_idx = 2;
-            return ['Какая площадь у ' + getSelected()[region] + ' округа?', shuffle([info[first][2], info[getSelectedIdx()[region]][2], info[second][2]]), getSelectedIdx()[region], 2/*, 0*/];
+            return ['Какая площадь у ' + getSelected()[region] + ' округа?', shuffle([info[first][2], info[getSelectedIdx()[region]][2], info[second][2]]), getSelectedIdx()[region], 2, 0];
         case 3:
             prop_idx = 3;
-            return ['Сколько живут людей в ' + getSelected()[region] + ' округе?', shuffle([info[first][3].toLocaleString(), info[getSelectedIdx()[region]][3].toLocaleString(), info[second][3].toLocaleString()]), getSelectedIdx()[region], 3/*, 0*/];
+            return ['Сколько живут людей в ' + getSelected()[region] + ' округе?', shuffle([info[first][3].toLocaleString(), info[getSelectedIdx()[region]][3].toLocaleString(), info[second][3].toLocaleString()]), getSelectedIdx()[region], 3, 0];
         case 4:
             dost = Math.floor(Math.random() * 2);
             prop_idx = -dost;
-            return ['Что из нижеперечисленного находится в ' + getSelected()[region] + ' федеральном округе?', shuffle([dostoprimechatelnosti[first][dost], dostoprimechatelnosti[getSelectedIdx()[region]][dost], dostoprimechatelnosti[second][dost]]), getSelectedIdx()[region], prop_idx/*, 2*/];
+            return ['Что из нижеперечисленного находится в ' + getSelected()[region] + ' федеральном округе?', shuffle([dostoprimechatelnosti[first][dost], dostoprimechatelnosti[getSelectedIdx()[region]][dost], dostoprimechatelnosti[second][dost]]), getSelectedIdx()[region], prop_idx, 2];
         case 5:
             prop_idx = 5;
-            return ['Какой климат в ' + getSelected()[region] + ' округе?', shuffle([info[first][5], info[getSelectedIdx()[region]][5], info[second][5]]), getSelectedIdx()[region], 5/*, 0*/];
+            return ['Какой климат в ' + getSelected()[region] + ' округе?', shuffle([info[first][5], info[getSelectedIdx()[region]][5], info[second][5]]), getSelectedIdx()[region], 5, 0];
     }
 }
 
