@@ -442,7 +442,7 @@ marquee {
     margin: auto;
     padding: auto;
     position: fixed;
-    background: no-repeat url('imgs/bg.jpg');
+    background: no-repeat url('../imgs/bg.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh;
