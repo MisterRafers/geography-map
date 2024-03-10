@@ -308,7 +308,7 @@ marquee {
 
   /* Modal Content/Box */
   .modal-content, .modal-content-2 {
-    background-color: #fefefe;
+    background-color: azure;
     /* ToDo: Change the background to gradient */
 
     margin: var(--modal-margin) auto; /* 15% from the top and centered */
@@ -442,7 +442,7 @@ marquee {
     margin: auto;
     padding: auto;
     position: fixed;
-    background: no-repeat url('bg.jpg');
+    background: no-repeat url('imgs/bg.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -470,6 +470,10 @@ marquee {
 #preloader.s {
     opacity: 0;
 }
+#preloader img {
+    width: 25%;
+}
+
 #fact {
     font-family: 'Panton';
     text-shadow:

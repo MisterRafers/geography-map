@@ -75,7 +75,7 @@ function nextInstruction() {
 function autoFact() {
     setTimeout(() => {
         document.getElementById('nextFact').click();
-        console.log('next');
+        //console.log('next');
         autoFact();
     }, 1000 + document.getElementById('fact').innerText.length * 33);
 }

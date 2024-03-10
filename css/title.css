@@ -43,7 +43,7 @@ body {
     background: no-repeat linear-gradient(
         rgba(0, 0, 0, 0.25),
         rgba(0, 0, 0, 0.25)
-      ), url('bg.jpg');
+      ), url('imgs/bg.jpg');
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -78,6 +78,9 @@ body {
 }
 
 @media all and (max-width: 1000px) {
+    #container {
+        margin: 0;
+    }
     #title {
         font-size: 2.2em;
     }

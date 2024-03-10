@@ -147,7 +147,7 @@ for (let i = 0; i < document.getElementsByClassName('hoverable').length; i++) {
         document.body.style.overflow = 'hidden';
         let idx = parseInt(document.getElementsByClassName('hoverable')[i].classList[0]) - 1;
 
-        document.getElementById('modal-img').src = 'map/' + (idx + 1) + '_.png';
+        document.getElementById('modal-img').src = 'imgs/map/' + (idx + 1) + '_.png';
         document.querySelector('#modal #bigFlex div').children[0].innerHTML = 'Название: <i>' + info[idx][0] + ' округ</i>';
         document.querySelector('#modal #bigFlex div').children[1].innerHTML = 'Столица: <i>' + info[idx][1] + '</i><br />'
             + 'Площадь: <i>' + info[idx][2].toLocaleString() + ' км.</i><br />'
@@ -161,7 +161,7 @@ for (let i = 0; i < document.getElementsByClassName('hoverable').length; i++) {
         document.querySelector('#modal #dost').innerHTML = '';
         //document.querySelector('#modal #dost').appendChild(t);
         for (let i = 0; i < dostoprimechatelnosti[idx].length; i++) {
-                document.querySelector('#modal #dost').innerHTML += '<div><a target="_blank" href="' + dostoprimechatelnostiLinks[idx][i] + '">' + dostoprimechatelnosti[idx][i] + '</a><br/><img class="dostImg" src="dost/' + idx + '-' + i + '.jpg" /></div>';
+                document.querySelector('#modal #dost').innerHTML += '<div><a target="_blank" href="' + dostoprimechatelnostiLinks[idx][i] + '">' + dostoprimechatelnosti[idx][i] + '</a><br/><img class="dostImg" src="imgs/dost/' + idx + '-' + i + '.jpg" /></div>';
         }
         // document.querySelector('#modal #bigFlex div').children[2]
         document.querySelector('#modal #bigFlex div').children[3].firstElementChild.href = 'https://yandex.ru/maps/' + info[idx][4];
@@ -583,7 +583,7 @@ function generateQuestion() {
         default: // case 0
             prop_idx = 0;
             dost = Math.floor(Math.random() * 3);
-            return ['В каком федеральном округе находится ' + dostoprimechatelnosti[getSelectedIdx()[region]][dost] + '?', shuffle([info[first][0], info[getSelectedIdx()[region]][0], info[second][1]]), getSelectedIdx()[region], 0, 1];
+            return ['В каком федеральном округе находится ' + dostoprimechatelnosti[getSelectedIdx()[region]][dost] + '?', shuffle([info[first][0], info[getSelectedIdx()[region]][0], info[second][0]]), getSelectedIdx()[region], 0, 1];
         case 1:
             prop_idx = 1;
             return ['Какая столица у ' + getSelected()[region] + ' округа?', shuffle([info[first][1], info[getSelectedIdx()[region]][1], info[second][1]]), getSelectedIdx()[region], 1, 0];
