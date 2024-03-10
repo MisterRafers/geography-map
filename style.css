@@ -282,7 +282,6 @@ marquee {
     }
     .modal-content-2 {
         margin: 30% auto !important;
-        min-height: 25% !important;
     }
     #myChartContainer, #myChart {
         width: 275px !important;
@@ -310,6 +309,8 @@ marquee {
   /* Modal Content/Box */
   .modal-content, .modal-content-2 {
     background-color: #fefefe;
+    /* ToDo: Change the background to gradient */
+
     margin: var(--modal-margin) auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
@@ -348,6 +349,7 @@ marquee {
     background-color: #619ABF;
     color: lightgray;
     border: 0;
+    padding: 3px 6px;
   }
   button:active {
     background-color: #619ABF;
@@ -386,13 +388,15 @@ marquee {
     position: relative;
     min-height: 12.5%;
   }
-  .modal-content-2 #btns {
+  /*.modal-content-2 #btns {
     position: absolute;
     bottom: 5%;
-  }
+  }*/
   #btns {
     width: 100%;
     gap: 5px;
+    margin-top: 5px;
+    margin-bottom: -5px;
   }
   .modal-content-2 fform, #dost {
     font-family: 'Times New Roman', Times, serif;

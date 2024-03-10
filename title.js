@@ -13,11 +13,11 @@ document.getElementById('class').addEventListener('input', (e) => {
 });*/
 document.getElementById('startBtn').addEventListener('click', () => {
     if (document.getElementById('name').value.split(' ').length < 2) {
-        alert('Имя указано неправильно!');
+        alert('Введите имя и фамилию!');
         return;
     }
     if (document.getElementById('class').value.length < document.getElementById('class').minLength) {
-        alert('Класс указан неправильно!');
+        alert('Введите класс!');
         return;
     }
     localStorage.setItem('name', document.getElementById('name').value.replace(/<\/?[^>]+(>|$)/g, ''));

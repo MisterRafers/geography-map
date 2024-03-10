@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Интерактивная карта России</title>
+    <title>Титульная страница</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="MisterRafers" />
     <meta name="description" content="Интерактивная карта с федеральными регионами России и информацией о каждом из них." />
@@ -19,6 +19,7 @@
     <meta name="twitter:url" content="https://misterrafers.github.io/geography-map/" />
     <meta name="twitter:domain" content="misterrafers.github.io" />
     <meta name="twitter:description" content="Интерактивная карта с федеральным регионами России и информацией о каждом из них." />
+    
     <style id="instructions"></style>
     <link rel="stylesheet" href="norm.css">
     <link rel="stylesheet" href="title.css">
@@ -26,9 +27,9 @@
 <body style="--child-id: 2;">
     <div id="container">
         <div id="title">
-            <p style="font-size: 3.3em;">Интерактивная карта России</p>
+            <p>Интерактивная карта России</p>
         </div>
-        <fаorm style="display: flex; gap: 6px; flex-flow: row wrap; justify-content: center;" onsubmit='window.location.href = "http://127.0.0.1:5500/index.html";'>
+        <fаorm id="form" onsubmit='window.location.href = "http://127.0.0.1:5500/index.html";'>
             <input type="submit" id="startBtn" style="font-size: 1.2em; flex: 1" value="Начать" />
             <input type="button" value="Инструкция" onclick="changeInstruction(1)" style="font-size: 1.2em; flex: 1" />
             <!--- maxlength="50" -->
@@ -39,8 +40,8 @@
         <details open>
             <summary style="color: lightgray">Скрыть/показать</summary>
             <div>
-                <h2 style="color: lightgray">Интересный факт: <p id="fact" style="color: black; font-size: 1.12em; overflow-wrap: normal; word-break: break-word; max-width: 75%; min-height: 9vh; background: rgba(240, 248, 255, 0.6); border-radius: 0 10px 10px 0;"></p></h2>
-                <button id="nextFact" style="font-size: 1.15em;">Следующий факт</button>
+                <h2 style="color: lightgray">Интересный факт: <p id="fact"></p></h2>
+                <button id="nextFact">Следующий факт</button>
             </div>
         </details>
     </div>
@@ -61,7 +62,7 @@
             <h1>Это вся инструкция.</h3>
             <h3>Удачной работы!</h3>
         </div>
-        <div style="display: flex; gap: 6px; flex-flow: row wrap; justify-content: center;">
+        <div id="btns">
             <button id="nextInstruction" onclick="nextInstruction()" style="font-size: 1em;">Дальше</button>
             <button id="stopInstruction" onclick="changeInstruction(0)" style="font-size: 1em;">Завершить инструкцию</button>
         </div>
