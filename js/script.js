@@ -121,6 +121,7 @@ for (let i = 0; i < document.getElementsByClassName('hoverable').length; i++) {
 
         if (!document.getElementsByClassName('hoverable')[i].classList.contains('selected')) {
             addSelected(document.getElementsByClassName('hoverable')[i]);
+	    if (navigator.vibrate != null) navigator.vibrate(180);
             return;
         }
         remSelected(document.getElementsByClassName('hoverable')[i]);
