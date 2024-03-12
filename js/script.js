@@ -116,6 +116,10 @@ document.getElementById('modal').addEventListener('click', (e) => {
 });
 
 for (let i = 0; i < document.getElementsByClassName('hoverable').length; i++) {
+    document.getElementsByClassName('hoverable')[i].addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+    });
+    
     document.getElementsByClassName('hoverable')[i].addEventListener('long-press', (e) => {
         e.preventDefault();
 
