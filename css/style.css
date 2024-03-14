@@ -57,9 +57,11 @@
     font-family: 'Panton';
     font-size: 1.45em;
     color: white;
+    word-break: keep-all;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 #dostBg {
-    background: #55B5FF;
+    background: var(--data-color);
     border-radius: 25px 25px 0 0;
     margin: 0;
     margin-bottom: -20px;
@@ -178,6 +180,27 @@ marquee {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
+  #modal2 .bg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    margin-left: -20px;
+    margin-top: -20px;
+    pointer-events: none;
+  }
+  #modal2 .bg div {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+  }
+  #modal2 .bg div img {
+    position: absolute;
+    width: 5%;
+    filter: invert(0.4);
+    opacity: 0.1;
+  }
 
   #mobile {
     display: none;
@@ -195,12 +218,12 @@ marquee {
     margin-right: 3%;
     margin-left: -20px;
 
-    background: #55B5FF;
+    background: var(--data-color);
     border-radius: 0 5px 5px 0;
   }
 
   #bigFlex {
-    color: #1FA9FF;
+    color: var(--data-color-h);
   }
   #bigFlex b {
     color: #63BBFF;
@@ -331,11 +354,15 @@ marquee {
     /*width: 70vw;*/
   }
   .modal-content h2 {
-    color:#63BBFF;
-    background-color: rgba(0, 0, 0, 0.025);
+    font-family: 'Panton';
+    color: white;
+    /* ToDo: FIND A WAY TO MAKE IT DYNAMIC!!! */
+    /*background: rgba(85, 181, 255, 0.95);*/
+    background: var(--data-color-s);
     border-radius: 7.5px;
     font-weight: 400;
     font-size: 2.1em;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   }
 
   button {
@@ -363,16 +390,18 @@ marquee {
   }
 
   #showOnMap {
-    background: linear-gradient(#57BDFF,#57BDFF) padding-box, linear-gradient(to right, #688ADF, #02257C) border-box;
+    /*background: linear-gradient(#57BDFF,#57BDFF) padding-box, linear-gradient(to right, #688ADF, #02257C) border-box;*/
+    background: linear-gradient(var(--data-color),var(--data-color)) padding-box, linear-gradient(to right, var(--data-color-h), var(--data-color-l)) border-box;
     border: 3px solid transparent;
     border-radius: 80px;
     padding: 3px 7px;
-    text-shadow: 2px 0 2.5px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 0 3px rgba(0, 0, 0, 0.65);
     z-index: 99;
     font-size: 1em;
   }
   #showOnMap:active {
-    background: linear-gradient(#619ABF, #619ABF) padding-box, linear-gradient(to right, #688ADF, #02257C) border-box;
+    /*background: linear-gradient(#619ABF, #619ABF) padding-box, linear-gradient(to right, #688ADF, #02257C) border-box;*/
+    background: linear-gradient(var(--data-color-a), var(--data-color-a)) padding-box, linear-gradient(to right, var(--data-color-h), var(--data-color-l)) border-box;
     border: 2px solid transparent;
     padding: 4px 7px;
   }

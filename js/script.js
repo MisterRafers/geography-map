@@ -20,6 +20,7 @@ var info = [
     ["Сибирский", "Новосибирск", 4361802, 16645802, "65/novosibirsk", "Резко-континентальный с суровыми зимами и коротким жарким летом."],
     ["Дальневосточный", "Владивосток", 331, 597240, "75/vladivostok", "В северной части климат резко континентальный, в южной части климат муссонный."]
 ];
+var colorData = ["rgba(163, 227, 210, 0.96)", "rgba(243, 193, 244, 0.96)", "rgba(253, 228, 63, 0.95)", "rgba(254, 183, 95, 0.95)", "rgba(203, 184, 250, 0.95)", "rgba(179, 238, 254, 0.95)", "rgba(251, 166, 185, 0.95)", "rgba(252, 240, 140, 0.95)"];
 
 const dostoprimechatelnosti = [
     ["Русский мост", "Маяк Эгершельд", "Золотой Мост"],
@@ -147,7 +148,37 @@ for (let i = 0; i < document.getElementsByClassName('hoverable').length; i++) {
                 });
             return;
         }
+        console.log(e.target.classList);
         document.body.style.setProperty('--modal-margin', '15vh');
+        var c = colvertize.convert(colorData[parseInt(e.target.classList[0]) - 1], 'hsl');
+        c.s -= 0.3;
+        document.body.style.setProperty('--data-color', colvertize.convert(c, 'css-rgb'));
+
+        console.log(colvertize.convert(c, 'css-rgb'));
+        console.log(c);
+        c.s -= 0.2;
+        //c.h += 5;
+        document.body.style.setProperty('--data-color-s', colvertize.convert(c, 'css-rgb'));
+        c.a = 1;
+        //c.h += 10;
+        c.h = Math.min(255, c.h);
+        //c.l -= 0.5; // To make it more visible
+        c.s += 0.2;
+        c.l -= 0.07;        
+        console.log(colvertize.convert(c, 'hsl', colvertize.gammaCorrection()));
+        document.body.style.setProperty('--data-color-l', colvertize.convert(c, 'css-rgb', colvertize.gammaCorrection()));
+        c.h -= 30;
+        c.h = Math.max(c.h, 0);
+        console.log(colvertize.convert(c, 'css-rgb'));
+        document.body.style.setProperty('--data-color-h', colvertize.convert(c, 'css-rgb', colvertize.gammaCorrection()));
+        c.h += 30;
+        c.s += 0.3;
+        c.l += 0.07;
+        c.s += 0.2;
+        c.s = Math.min(c.s, 1);
+        console.log(colvertize.convert(c, 'hsl', colvertize.gammaCorrection()));
+        document.body.style.setProperty('--data-color-a', colvertize.convert(c, 'css-rgb', colvertize.gammaCorrection()));
+
         document.getElementById('modal').style.display = 'block';
         document.body.style.overflow = 'hidden';
         let idx = parseInt(document.getElementsByClassName('hoverable')[i].classList[0]) - 1;
@@ -627,6 +658,11 @@ document.getElementById('close').addEventListener('click', () => {
 
 var loader = document.getElementById('preloader');
 window.addEventListener('load', () => {
+    if (localStorage.getItem('lagmode') == 'on') {
+        var s = document.createElement('style');
+        s.innerHTML = '.hoverable {shape-rendering: crispEdges}';
+        document.head.appendChild(s);
+    }
     setTimeout(() => {loader.className = 's'; clearInterval(a); setTimeout(() => {
         loader.style.display = 'none';
     }, 700);}, 1500);

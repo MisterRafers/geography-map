@@ -25,6 +25,12 @@ document.getElementById('startBtn').addEventListener('click', () => {
     window.location.href = window.location.href.split('/').splice(0, window.location.href.split('/').length - 1).join('/');
 });
 
+document.getElementById('lagmode').addEventListener('change', (e) => {
+    localStorage.setItem('lagmode', e.target.value);
+});
+if (localStorage.getItem('lagmode') != null)
+    document.getElementById('lagmode').value = localStorage.getItem('lagmode');
+
 function trueName() {
     document.querySelector('input#name').value = 'Абдулахан Ахмедридов Ахмеджбрякович';
     document.querySelector('input#class').value = '=)';
