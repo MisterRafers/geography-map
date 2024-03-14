@@ -154,8 +154,8 @@ for (let i = 0; i < document.getElementsByClassName('hoverable').length; i++) {
         c.s -= 0.3;
         document.body.style.setProperty('--data-color', colvertize.convert(c, 'css-rgb'));
 
-        console.log(colvertize.convert(c, 'css-rgb'));
-        console.log(c);
+        //console.log(colvertize.convert(c, 'css-rgb'));
+        //console.log(c);
         c.s -= 0.2;
         //c.h += 5;
         document.body.style.setProperty('--data-color-s', colvertize.convert(c, 'css-rgb'));
@@ -165,18 +165,24 @@ for (let i = 0; i < document.getElementsByClassName('hoverable').length; i++) {
         //c.l -= 0.5; // To make it more visible
         c.s += 0.2;
         c.l -= 0.07;        
-        console.log(colvertize.convert(c, 'hsl', colvertize.gammaCorrection()));
+        //console.log(colvertize.convert(c, 'hsl', colvertize.gammaCorrection()));
         document.body.style.setProperty('--data-color-l', colvertize.convert(c, 'css-rgb', colvertize.gammaCorrection()));
         c.h -= 30;
         c.h = Math.max(c.h, 0);
-        console.log(colvertize.convert(c, 'css-rgb'));
+        //console.log(colvertize.convert(c, 'css-rgb'));
         document.body.style.setProperty('--data-color-h', colvertize.convert(c, 'css-rgb', colvertize.gammaCorrection()));
+        c.h += 120;
+        var b = c.l;
+        c.l = .2;
+        document.body.style.setProperty('--data-color-h2', colvertize.convert(c, 'css-rgb', colvertize.gammaCorrection()));
+        c.l = b;
+        c.h -= 120;
         c.h += 30;
         c.s += 0.3;
         c.l += 0.07;
         c.s += 0.2;
         c.s = Math.min(c.s, 1);
-        console.log(colvertize.convert(c, 'hsl', colvertize.gammaCorrection()));
+        //console.log(colvertize.convert(c, 'hsl', colvertize.gammaCorrection()));
         document.body.style.setProperty('--data-color-a', colvertize.convert(c, 'css-rgb', colvertize.gammaCorrection()));
 
         document.getElementById('modal').style.display = 'block';

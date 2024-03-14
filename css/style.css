@@ -223,10 +223,7 @@ marquee {
   }
 
   #bigFlex {
-    color: var(--data-color-h);
-  }
-  #bigFlex b {
-    color: #63BBFF;
+    color: var(--data-color-h2);
   }
 
   @media all and (max-height: 924px) and (min-width: 400px) {
@@ -395,7 +392,8 @@ marquee {
     border: 3px solid transparent;
     border-radius: 80px;
     padding: 3px 7px;
-    text-shadow: 2px 0 3px rgba(0, 0, 0, 0.65);
+    /*text-shadow: 2px 0 3px rgba(0, 0, 0, 0.65);*/
+    text-shadow: -1px -1px 0 rgba(0,0,0,0.5), 1px -1px 0 rgba(0,0,0,0.5), -1px 1px 0 rgba(0,0,0,0.5), 1px 1px 0 rgba(0,0,0,0.5);
     z-index: 99;
     font-size: 1em;
   }
