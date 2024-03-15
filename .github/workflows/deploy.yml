@@ -31,13 +31,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: minisauras
-        uses: TeamTigers/minisauras@v2.0.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        id: dir
+      - name: Auto Minify
+        uses: nizarmah/auto-minify@v2.1
         with:
-          directory: './'
+          overwrite: true
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
