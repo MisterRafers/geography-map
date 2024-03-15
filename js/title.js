@@ -11,6 +11,12 @@ document.getElementById('class').addEventListener('input', (e) => {
         e.preventDefault();
     }
 });*/
+
+if (localStorage.getItem('name') != null)
+    document.getElementById('name').value = localStorage.getItem('name');
+if (localStorage.getItem('class') != null)
+    document.getElementById('class').value = localStorage.getItem('name');
+
 document.getElementById('startBtn').addEventListener('click', () => {
     if (document.getElementById('name').value.split(' ').length < 2) {
         alert('Введите имя и фамилию!');
@@ -22,7 +28,7 @@ document.getElementById('startBtn').addEventListener('click', () => {
     }
     localStorage.setItem('name', document.getElementById('name').value.replace(/<\/?[^>]+(>|$)/g, ''));
     localStorage.setItem('class', document.getElementById('class').value.replace(/<\/?[^>]+(>|$)/g, ''));
-    window.location.href = window.location.href.split('/').splice(0, window.location.href.split('/').length - 1).join('/');
+    window.location.href = 'map.html';
 });
 
 document.getElementById('lagmode').addEventListener('change', (e) => {
