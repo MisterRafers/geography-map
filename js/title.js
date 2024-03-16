@@ -16,6 +16,8 @@ if (localStorage.getItem('name') != null)
     document.getElementById('name').value = localStorage.getItem('name');
 if (localStorage.getItem('class') != null)
     document.getElementById('class').value = localStorage.getItem('name');
+if (localStorage.getItem('lagmode'))
+    document.getElementById('lagmode').value = localStorage.getItem('lagmode');
 
 document.getElementById('startBtn').addEventListener('click', () => {
     if (document.getElementById('name').value.split(' ').length < 2) {

@@ -115,6 +115,9 @@ function getCheckedInput() {
 document.getElementById('modal').addEventListener('click', (e) => {
     if (e.target.id == 'modal') document.getElementById('close').click();
 });
+document.getElementById('modal2').addEventListener('click', (e) => {
+    if (e.target.id == 'modal2' && questions.length == 0) document.getElementsByClassName('close2')[0].click();
+})
 
 for (let i = 0; i < document.getElementsByClassName('hoverable').length; i++) {
     document.getElementsByClassName('hoverable')[i].addEventListener('contextmenu', (e) => {
@@ -668,6 +671,12 @@ window.addEventListener('load', () => {
         var s = document.createElement('style');
         s.innerHTML = '.hoverable {shape-rendering: crispEdges}';
         document.head.appendChild(s);
+
+        /*for (let i = 0; i < 8; i++)
+            for (let j = 0; j < 3; j++) {
+                var im = new Image();
+                im.src = 'imgs/dost/' + i + '-' + j + '.jpg';
+            }*/
     }
     setTimeout(() => {loader.className = 's'; clearInterval(a); setTimeout(() => {
         loader.style.display = 'none';
