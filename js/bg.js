@@ -1,18 +1,18 @@
 const bg = document.querySelector('.modal-content-2 .bg').firstElementChild;
+var poses = [];
 for (let i = 0; i < bg.childElementCount; i++) {
-    bg.children[i].style.left = Math.floor(Math.random() * (1300 - 50) + 50) + 'px';
-    bg.children[i].style.top = Math.floor(Math.random() * (110 - 20) + 20) + 'px';
-    bg.children[i].style.scale = Math.floor(Math.random() * (3 - 1) + 1);
-    bg.children[i].style.rotation = Math.floor(Math.random() * (80 - 0) + 0) + 'deg';
+    poses.push({left: Math.floor(Math.random() * (1300 - 50) + 50), top: Math.floor(Math.random() * (110 - 20) + 20), scale: Math.floor(Math.random() * (3 - 1) + 1), rotation: Math.floor(Math.random() * (80 - 0) + 0)});
+    document.body.style.setProperty('--top-' + i, poses[i].top + 'px');
 }
 
 function move() {
     requestAnimationFrame(move);
-    for (let i = 0; i < bg.childElementCount; i++) {
-        bg.children[i].style.left = parseFloat(bg.children[i].style.left.substring(0, bg.children[i].style.left.length - 2)) + 2 + 'px';
-        if (parseFloat(bg.children[i].style.left.substring(0, bg.childen[i].style.left.length - 2)) > bg.clientWidth + .5) {
-            bg.children[i].style.left = -100 + 'px';
+    for (let i = 0; i < poses.length; i++) {
+        poses[i].left += 2;
+        if (poses[i].left > bg.clientWidth + poses[i].scale) {
+            poses[i].left = -100;
         }
+        document.body.style.setProperty('--left-' + i, poses[i].left + 'px');
     }
 }
 //move();
