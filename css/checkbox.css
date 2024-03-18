@@ -2,20 +2,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
 #rCont {
     position: relative;
     /*margin: 20px;*/
     overflow: hidden;
     width: 75vw;
-  }
+}
 .entry {
     height: 25px;
     position: absolute;
     width: 75vw;
 }
-  .entry:nth-child(2) {
- left: 8px;
+.entry:nth-child(2) {
+    left: 8px;
     top: 8px;
 }
 .entry:nth-child(4) {
