@@ -22,6 +22,7 @@
 
     <link rel="stylesheet" href="libs/norm.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/checkbox.css" />
 </head>
 <body style="--card-image: rgba(1, 26, 248, 0.2); --blur: 0px; --brightness: 1; --interactable: all; --modal-margin: 10vh; --scale: 1.1; --modal-width: 60vw; --modal-height: 65vh">
     <div id="preloader">
@@ -89,29 +90,39 @@
                     <div class="point"></div>
                 </div>
                 <br />
-                <fform action="">
-                    <div>
-                        <input type="radio" name="choice" id="opt1" value="0">
-                        <label for="opt1" id="opt1l">Option 1</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="choice" id="opt2" value="1">
-                        <label for="opt2" id="opt2l">Option 2</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="choice" id="opt3" value="2">
-                        <label for="opt3" id="opt3l">Option 3</label>
-                    </div>
+                <!-- ToDo: FIX BIG PADDING (and change mask) -->
+                <!-- https://codepen.io/ainalem/pen/QzogPe -->
+                <div id="rOuterCont">
+                <fform action="" id="rCont">
+                        <input type="radio" name="choice" id="opt1" value="0" class="hidden">
+                        <label for="opt1" id="opt1l" class="entry"><div class="circle"></div><div class="entry-label">Option 1</div></label>
+                        <input type="radio" name="choice" id="opt2" value="1" class="hidden">
+                        <label for="opt2" id="opt2l" class="entry"><div class="circle"></div><div class="entry-label">Option 2</div></label>
+                        <input type="radio" name="choice" id="opt3" value="2" class="hidden">
+                        <label for="opt3" id="opt3l" class="entry"><div class="circle"></div><div class="entry-label">Option 3</div></label>
+                    <div class="highlight"></div>
+                    <div class="overlay"></div>
                     <!-- <button id="answerBtn">Проверить</button> -->
                     <!-- <h4 id="status">Статус: ...</h4> -->
-                    <div id="btns" class="flex">
-                        <button id="previousBtn" style="font-size: 16px;" disabled>Предедущий</button>
-                        <button id="nextBtn" style="font-size: 16px;">Дальше</button>
-                        <div style="flex-grow: 0.97; position: relative">
-                            <button disabled id="summitBtn" style="font-size: 16px; position: absolute; right: 0">Итоги</button>
-                        </div>
-                    </div>
                 </fform>
+                </div>
+                <!--<svg width="0" height="0" viewBox="0 0 40 140">
+                    <defs>
+                        <mask id="holes">
+                            <rect x="0" y="0" width="100" height="140" fill="white" />
+                            <circle r="12" cx="20" cy="20" fill="black"/>
+                            <circle r="12" cx="20" cy="70" fill="black"/>
+                            <circle r="12" cx="20" cy="120" fill="black"/>
+                        </mask>
+                    </defs>
+                </svg>-->
+                <div id="btns" class="flex">
+                    <button id="previousBtn" style="font-size: 16px;" disabled>Предедущий</button>
+                    <button id="nextBtn" style="font-size: 16px;">Дальше</button>
+                    <div style="flex-grow: 0.97; position: relative">
+                        <button disabled id="summitBtn" style="font-size: 16px; position: absolute; right: 0">Итоги</button>
+                    </div>
+                </div>
             </div>
             <div id="summit" class="hidden">
                 <div class="close2">&times;</div>

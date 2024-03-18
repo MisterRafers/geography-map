@@ -280,18 +280,18 @@ document.getElementById('startTest').addEventListener('click', () => {
     document.getElementById('questionInfo').classList = document.getElementById('questionInfo').classList == 'hidden' ? '' : 'hidden';
     document.getElementById('defaultInfo').classList = document.getElementById('defaultInfo').classList == 'hidden' ? '' : 'hidden';
     document.getElementById('questionTitle').innerHTML = val[0];
-    document.getElementById('opt1l').innerHTML = val[1][0];
-    document.getElementById('opt2l').innerHTML = val[1][1];
-    document.getElementById('opt3l').innerHTML = val[1][2];
+    document.getElementById('opt1l').lastElementChild.innerText = val[1][0];
+    document.getElementById('opt2l').lastElementChild.innerText = val[1][1];
+    document.getElementById('opt3l').lastElementChild.innerText = val[1][2];
     document.getElementById('answerStreak').innerText = questionID + '/' + questionsCount + String.fromCharCode(160);
 });
 for (let i = 0; i < document.getElementById('points').childElementCount; i++) {
     document.getElementById('points').children[i].addEventListener('click', () => {
         var val = questions[i];
         document.getElementById('questionTitle').innerHTML = val[0];
-        document.getElementById('opt1l').innerHTML = val[1][0];
-        document.getElementById('opt2l').innerHTML = val[1][1];
-        document.getElementById('opt3l').innerHTML = val[1][2];
+        document.getElementById('opt1l').lastElementChild.innerText = val[1][0];
+        document.getElementById('opt2l').lastElementChild.innerText = val[1][1];
+        document.getElementById('opt3l').lastElementChild.innerText = val[1][2];
         if (document.getElementsByClassName('current').length != 0) document.getElementsByClassName('current')[0].classList.remove('current');
         questionID = i + 1;
         document.getElementById('points').children[i].classList.add('current');
@@ -319,9 +319,9 @@ document.getElementById('nextBtn').addEventListener('click', () => {
     document.getElementsByClassName('point')[questionID - 1].classList.add('current');
     //console.log(val);
     document.getElementById('questionTitle').innerHTML = val[0];
-    document.getElementById('opt1l').innerHTML = val[1][0];
-    document.getElementById('opt2l').innerHTML = val[1][1];
-    document.getElementById('opt3l').innerHTML = val[1][2];
+    document.getElementById('opt1l').lastElementChild.innerText = val[1][0];
+    document.getElementById('opt2l').lastElementChild.innerText = val[1][1];
+    document.getElementById('opt3l').lastElementChild.innerText = val[1][2];
     document.getElementById('answerStreak').innerText = questionID + '/' + questionsCount + String.fromCharCode(160);
 
     if (questionsAnswered.has(questionID - 1)) {
@@ -461,9 +461,9 @@ document.getElementById('previousBtn').addEventListener('click', () => {
     document.getElementsByClassName('point')[questionID - 1].classList.add('current');
     //console.log(val);
     document.getElementById('questionTitle').innerHTML = val[0];
-    document.getElementById('opt1l').innerHTML = val[1][0];
-    document.getElementById('opt2l').innerHTML = val[1][1];
-    document.getElementById('opt3l').innerHTML = val[1][2];
+    document.getElementById('opt1l').lastElementChild.innerText = val[1][0];
+    document.getElementById('opt2l').lastElementChild.innerText = val[1][1];
+    document.getElementById('opt3l').lastElementChild.innerText = val[1][2];
     document.getElementById('answerStreak').innerText = questionID + '/' + questionsCount + String.fromCharCode(160);
 
     if (questionsAnswered.has(questionID - 1)) {
