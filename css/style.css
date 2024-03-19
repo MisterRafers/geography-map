@@ -83,6 +83,7 @@
     -moz-border-radius: 25px;
     border-radius: 25px;
     background: gray;
+    transition: .15s background-color cubic-bezier(0.175, 0.885, 0.32, 1.2);
 }
 .point.answered {
     background: lightgreen;
