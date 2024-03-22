@@ -27,7 +27,7 @@
 <body style="--card-image: rgba(1, 26, 248, 0.2); --blur: 0px; --brightness: 1; --interactable: all; --modal-margin: 10vh; --scale: 1.1; --modal-width: 60vw; --modal-height: 65vh">
     <div id="preloader">
         <div style="width: 70%;">
-            <img src="imgs/глобус.gif" alt="глобус" />
+            <!-- <img src="imgs/глобус.gif" alt="глобус" /> -->
             <h3>Россия</h3>
             <br />
             <p id="fact">Загрузка.</p>
@@ -36,8 +36,8 @@
     <marquee id="pc" behavior="alternative" direction="left" style="font-size: 1.3em;">Сделал Бордунов Сергей</marquee>
     <div id="modal">
         <div class="modal-content">
-            <div style="">
-                <span id="close">&times;</span>
+            <div>
+                <span id="close" title="Закрыть окно">&times;</span>
                 <h2 class="center">Информация</h2>
             </div>
             <br />
@@ -69,14 +69,14 @@
                 </div>
             </div>
             <div id="defaultInfo">
-                <div class="close2">&times;</div>
+                <div class="close2" title="Закрыть окно">&times;</div>
                 <h3 class="center" style="font-size: 25px;">Информация</h3>
                 <br />
                 <p></p>
                 <button id="startTest" style="font-size: 15px;">Начать</button>
             </div>
             <div id="questionInfo" class="hidden">
-                <div class="close2">&times;</div>
+                <div class="close2" title="Закрыть окно">&times;</div>
                 <div class="flex">
                     <p id="answerStreak">1/1</p>
                     <h3 id="questionTitle">Вопрос</h3>
@@ -125,7 +125,7 @@
                 </div>
             </div>
             <div id="summit" class="hidden">
-                <div class="close2">&times;</div>
+                <div class="close2" title="Закрыть окно">&times;</div>
                 <h3>Итоги</h3>
                 <div id="myChartContainer">
                     <canvas id="myChart" role="img" aria-label="My chart"></canvas>
@@ -141,6 +141,8 @@
         <div style="position: absolute; z-index: 2;" id="sendDiv">
             <button style="font-size: 17px;" id="send" disabled>Начать тестирование</button>
             <button style="font-size: 17px;" id="rand">Выбрать случайные регионы</button>
+            <br />
+            <button style="font-size: 17px;" id="back">Назад</button>
         </div>
         <div id="map" data-long-press-delay="350">
             <img src="imgs/1016926832.jpg" alt="" />

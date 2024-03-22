@@ -15,7 +15,7 @@ document.getElementById('class').addEventListener('input', (e) => {
 if (localStorage.getItem('name') != null)
     document.getElementById('name').value = localStorage.getItem('name');
 if (localStorage.getItem('class') != null)
-    document.getElementById('class').value = localStorage.getItem('name');
+    document.getElementById('class').value = localStorage.getItem('class');
 if (localStorage.getItem('lagmode'))
     document.getElementById('lagmode').value = localStorage.getItem('lagmode');
 
@@ -24,8 +24,12 @@ document.getElementById('startBtn').addEventListener('click', () => {
         alert('Введите имя и фамилию!');
         return;
     }
-    if (document.getElementById('class').value.length < document.getElementById('class').minLength) {
+    if (document.getElementById('class').value.length < 1) {
         alert('Введите класс!');
+        return;
+    }
+    if (document.getElementById('class').value.length < 2) {
+        alert('Вы не ввели букву или цифру класса!');
         return;
     }
     localStorage.setItem('name', document.getElementById('name').value.replace(/<\/?[^>]+(>|$)/g, ''));
@@ -65,24 +69,31 @@ const facts = [
 
 let fact_id = -1;
 fact_id = Math.floor(Math.random() * facts.length) - 1;
-let instructionID = 2;
+let instructionID = 1;
 document.getElementById('nextFact').addEventListener('click', () => {
     fact_id = Math.min(Math.max(fact_id + 1, 0), facts.length-1);
     document.getElementById('fact').innerHTML = '<p>' + facts[fact_id] + '</p>';
 });
 document.getElementById('nextFact').click();
 function changeInstruction(id) {
-    document.getElementById('nextInstruction').disabled = false;
     document.getElementById('container').style.display = id == 0 ? 'block' : 'none';
     document.getElementById('instruction').style.display = id == 0 ? 'none' : 'block';
-    instructionID = id == 0 ? 2 : instructionID;
+    instructionID = id == 0 ? 1 : instructionID;
     document.body.style.setProperty('--child-id', id);
     document.getElementById('instructions').textContent = "#instruction > :not(:nth-child(" + document.body.style.getPropertyValue('--child-id') + ")) { display: none; }";
 }
-function nextInstruction() {
+function prevInstruction() {
+    instructionID--;
     changeInstruction(instructionID);
+    if (document.getElementById('nextInstruction').disabled) document.getElementById('nextInstruction').disabled = false;
+    if (instructionID == 1)
+        document.getElementById('prevInstruction').disabled = true;
+}
+function nextInstruction() {
     instructionID++;
-    if (instructionID > document.getElementById('instruction').childElementCount - 1)
+    changeInstruction(instructionID);
+    if (document.getElementById('prevInstruction').disabled) document.getElementById('prevInstruction').disabled = false;
+    if (instructionID >= document.getElementById('instruction').childElementCount - 1)
         document.getElementById('nextInstruction').disabled = true;
 }
 
@@ -91,6 +102,6 @@ function autoFact() {
         document.getElementById('nextFact').click();
         //console.log('next');
         autoFact();
-    }, 1000 + document.getElementById('fact').innerText.length * 33);
+    }, 1200 + document.getElementById('fact').innerText.length * 66);
 }
 autoFact();

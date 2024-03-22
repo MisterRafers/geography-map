@@ -5,11 +5,10 @@
 }
 #rCont {
     position: relative;
-    /*margin: 20px;*/
     overflow: hidden;
     width: 75vw;
 }
-#rCont * {
+.entry-label {
     -webkit-tap-highlight-color: transparent;
 }
 .entry {

@@ -198,17 +198,11 @@ for (let i = 0; i < document.getElementsByClassName('hoverable').length; i++) {
             + 'Площадь: <i>' + info[idx][2].toLocaleString() + ' км.</i><br />'
             + 'Население: <i>' + info[idx][3].toLocaleString() + ' чел.</i><br />'
             + 'Климат: <i>' + info[idx][5] + '</i><br /><br />';
-        //document.querySelector('#modal .flex div').children[3].innerHTML = dostoprimechatelnostiLinks[idx] + dostoprimechatelnosi[idx].join('<br/>');
         document.querySelector('#modal #dost').innerHTML = '';
-        /*var t = document.createElement('h3');
-        t.id = 'dostText';
-        t.innerHTML = '<b>Достопримечательности:</b>';*/
         document.querySelector('#modal #dost').innerHTML = '';
-        //document.querySelector('#modal #dost').appendChild(t);
         for (let i = 0; i < dostoprimechatelnosti[idx].length; i++) {
                 document.querySelector('#modal #dost').innerHTML += '<div><a target="_blank" href="' + dostoprimechatelnostiLinks[idx][i] + '">' + dostoprimechatelnosti[idx][i] + '</a><br/><img class="dostImg" src="imgs/dost/' + idx + '-' + i + '.jpg" /></div>';
         }
-        // document.querySelector('#modal #bigFlex div').children[2]
         document.querySelector('#modal #bigFlex div').children[3].firstElementChild.href = 'https://yandex.ru/maps/' + info[idx][4];
 
         document.body.style.setProperty('--blur', '4px');
@@ -217,11 +211,12 @@ for (let i = 0; i < document.getElementsByClassName('hoverable').length; i++) {
         document.body.style.setProperty('--scale', '1');
         document.body.style.setProperty('--modal-witdth', '100%');
         document.body.style.setProperty('--modal--height', document.getElementsByClassName('modal-content')[0].scrollHeight + 'px');
-
-        //console.log('modal!');
     });
 }
 
+document.getElementById('back').addEventListener('click', () => {
+    window.location.href = '../';
+});
 document.getElementById('send').addEventListener('click', () => {
     //if (selectedObjs.length == 0) return;
     //console.log(selectedObjs.map(x => info[parseInt(x.classList[0])]));
@@ -473,58 +468,15 @@ document.getElementById('previousBtn').addEventListener('click', () => {
     }
 });
 
-/*document.getElementById('answerBtn').addEventListener('click', () => {
-    // ToDo: придумать алгоритм чтоб не хранить переменную (типа чтоб тяжелее было списывать :)) 
-    // ToDo: хотя можно и переменную (для себя)
-    answered = true;
-    //questionsAnswered += 1;
-    // ToDo: POPRAVIT BARANU
-    //!!!!!!!!!!!!!!!!!
-    document.getElementById('answerStreak').innerText = questionID + '/' + questionsCount + String.fromCharCode(160);
-    switch (questions[questionID - 1][4]) {
-        case 0:
-            console.log(info[questions[questionID - 1][2]][questions[questionID - 1][3]]);
-            console.log(getCheckedInput());
-            if (info[questions[questionID - 1][2]][questions[questionID - 1][3]].toString().replace(/\s+/g, '') == getCheckedInput().toString().replace(/\s+/g, '')) {
-                document.getElementById('status').innerHTML = 'Статус: <p style="color: green">Верно!</p>';
-                rightAnswered += 1;
-            } else {
-                document.getElementById('status').innerHTML = 'Статус: <p style="color: red">Неверно!</p>';
-            }
-            break;
-        case 1:
-            console.log(dostoprimechatelnosti[questions[questionID - 1][2]][-questions[questionID - 1][3]]);
-            console.log(getCheckedInput());
-            // [2] is region
-            //if (dostoprimechatelnosti[questions[questionID - 1][2]][-questions[questionID - 1][3]].toString().replace(/\s+/g, '') == getCheckedInput().toString().replace(/\s+/g, '')) {
-            if (info[questions[questionID - 1][2]][0].toString() == getCheckedInput().toString()) {
-                document.getElementById('status').innerHTML = 'Статус: <p style="color: green">Верно!</p>';
-                rightAnswered += 1;
-            } else {
-                document.getElementById('status').innerHTML = 'Статус: <p style="color: red">Неверно!</p>';
-            }
-            break;
-        case 2:
-            console.log(dostoprimechatelnosti[questions[questionID - 1][2]]);
-            console.log(getCheckedInput());
-            if (dostoprimechatelnosti[questions[questionID - 1][2]].indexOf(getCheckedInput()) != -1) {
-                document.getElementById('status').innerHTML = 'Статус: <p style="color: green">Верно!</p>';
-                rightAnswered += 1;
-            } else {
-                document.getElementById('status').innerHTML = 'Статус: <p style="color: red">Неверно!</p>';
-            }
-            break;
-    }
-});*/
-
 function addSelected(elem) {
     document.getElementById('send').disabled = false;
     if (document.getElementsByClassName(elem.classList[0]).length > 1) {
         Array.from(document.getElementsByClassName(elem.classList[0])).forEach((val) => {
             val.classList.add('selected');
         });
-    } else
-    elem.classList.add('selected');
+    } else {
+        elem.classList.add('selected');
+    }
 }
 
 function remSelected(elem) {
@@ -532,8 +484,9 @@ function remSelected(elem) {
         Array.from(document.getElementsByClassName(elem.classList[0])).forEach((val) => {
             val.classList.remove('selected');
         });
-    } else
-    elem.classList.remove('selected');
+    } else {
+        elem.classList.remove('selected');
+    }
 
     if (document.getElementsByClassName('selected').length == 0) document.getElementById('send').disabled = true;
 }
@@ -600,10 +553,6 @@ function generateQuestion() {
         lastGen.set(r, [region]);
     }
 
-    //~ Seems to generate list without "underfined" elements.
-    //~ arr = arr.filter(function (n) { return n !== undefined });
-
-    // // ToDo: это.
     var answers = [];
     var possibleDistricts = [];
     for (let i = 0; i < info.length; i++) {
@@ -613,15 +562,10 @@ function generateQuestion() {
             possibleDistricts.push(i);
         }
     }
-    //console.group();
-    //console.log(possibleDistricts, answers);
     let i = Math.floor(Math.random() * possibleDistricts.length);
     let first = possibleDistricts[i];
     possibleDistricts.splice(i, 1);
-    //console.log(possibleRegions, answers);
     let second = possibleDistricts[Math.floor(Math.random() * possibleDistricts.length)];
-    //console.log(info[first], info[second], info[getSelectedIdx()[region]]);
-    //console.groupEnd();
 
     lastQuestion = r;
     switch (r) {

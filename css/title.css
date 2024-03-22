@@ -19,7 +19,7 @@ details * {
 }
 
 #class {
-    width: 47.5px;
+    /*width: 47.5px;*/
 }
 
 #title {
@@ -65,7 +65,7 @@ body {
 #form {
     display: flex;
     gap: 6px;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
     justify-content: center;
 }
 
@@ -74,6 +74,25 @@ body {
     gap: 6px;
     flex-flow: row wrap;
     justify-content: center;
+}
+
+#startBtn {
+    background: greenyellow;
+    border: 0;
+}
+#startBtn:active {
+    background: green;
+}
+#startBtn:hover, #instBtn:hover {
+    cursor: pointer;
+}
+
+#instBtn {
+    background: lightblue;
+    border: 0;
+}
+#instBtn:active {
+    background: cadetblue;
 }
 
 @media all and (max-width: 1000px) {

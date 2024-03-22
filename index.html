@@ -20,51 +20,73 @@
     <meta name="twitter:domain" content="misterrafers.github.io" />
     <meta name="twitter:description" content="Интерактивная карта с федеральным регионами России и информацией о каждом из них." />
     
-    <style id="instructions"></style>
+    <style id="instructions">#instruction > :not(:nth-child(1)) {display: none}</style>
     <link rel="stylesheet" href="libs/norm.css" />
     <link rel="stylesheet" href="css/title.css" />
 </head>
-<body style="--child-id: 2;">
+<body style="--child-id: 1;">
     <div id="container">
         <div id="title">
-            <p>Интерактивная карта России</p>
+            <p style="color: white">Интерактивная карта России</p>
         </div>
         <fаorm id="form" onsubmit='window.location.href = "https://misterrafers.github.io/geography-map/map.html";'>
-            <input type="submit" id="startBtn" style="font-size: 1.2em; flex: 1" value="Начать" />
-            <input type="button" value="Инструкция" onclick="changeInstruction(1)" style="font-size: 1.2em; flex: 1" />
+            <input id='instBtn' type="button" value="Инструкция" onclick="document.getElementById('container').style.display = 'none'; document.getElementById('instruction').style.display = 'block';" style="font-size: 1.2em; flex: 1" />
             <!--- maxlength="50" -->
-            <input type="text" name="name" id="name" required autocomplete="off" placeholder="Введите имя и фамилию..." style="font-size: 1.2em; flex: 2">
-            <input type="text" name="class" id="class" required autocomplete="off" maxlength="3" minlength="2" placeholder="Класс" style="font-size: 1.2em; flex: 2">
+            <input type="text" name="name" id="name" required autocomplete="off" placeholder="Введите имя и фамилию..." title="Введите имя и фамилию..." style="font-size: 1.2em; flex: 2">
+            <input type="text" name="class" id="class" required autocomplete="off" maxlength="3" minlength="2" placeholder="Введите класс..." title="Введите класс..." style="font-size: 1.2em; flex: 2">
         </fаorm>
+        <br />
+        <button id="startBtn" style="width: 100%; font-size: 1.2em; flex: 1;">Начать</button>
         <input type="checkbox" name="lagmode" id="lagmode" />
-        <label for="lagmode" title="Включите, чтобы уменьшить нагрузку сайта на процессор">Режим для слабых устройств</label>
+        <label for="lagmode" title="Включите, чтобы уменьшить нагрузку сайта на процессор" style="color: white">Режим для слабых устройств</label>
 
         <details open>
-            <summary>Скрыть/показать</summary>
+            <summary style="color: white">Скрыть/показать</summary>
             <div>
-                <h2>Интересный факт: <p id="fact"></p></h2>
+                <h2 style="color: white">Интересный факт: <p id="fact"></p></h2>
                 <button id="nextFact">Следующий факт</button>
             </div>
         </details>
     </div>
     <div id="instruction" style="display: none;">
         <div class="inst">
+            <h1>Для начала работы, введите ваши имя, фамилию<br />и класс (номер и букву) в соответствующие ячейки</h1>
+            <h3>Также, если Вы считаете, что у Вас слабое устройство,<br />нажмите на соответствующий квадратик</h3>
+        </div>
+        <div class="inst">
+            <h1>После этого, нажмите на кнопку "Начать"</h1>
+            <h3>Она перебросит вас на страницу с картой</h3>
+        </div>
+        <div class="inst">
             <h1>Для того, чтобы ознакомиться с определённым элементом на карте, нажмите на него <i>правой кнопкой мыши</i></h1>
-            <h3>У вас должно открыться окно</h3>
+            <h3>У вас должно открыться окно с информацией</h3>
+        </div>
+        <div class="inst">
+            <h1>Функции «показать на яндекс картах» и «достопримечательности» работают только при подключении к интернету</h3>
+        </div>
+        <div class="inst">
+            <h1>Чтобы закрыть окно, нажмите на крестик сверху слева, в затемнённую область, или на клавишу <i>Escape</i></h3>
         </div>
         <div class="inst">
             <h1>Помимо просмотра информации, на сайте есть <b>Режим тестирования</b></h1>
-            <h3>Чтобы войти в него, вам нужно выбрать округа <i>(shift + правая кнопка мыши) или удержание пальца</i></h3>
+            <h3>Чтобы войти в него, вам нужно выбрать округа <i>(shift</i> + правая кнопка мыши) или удержание пальца в мобильном режиме</h3>
         </div>
         <div class="inst">
-            <h1>После этого, нажмите на кнопку "<b>Начать тестирование</b>"</h1>
+            <h1>После выделения, нажмите "Начать тестирование"</h3>
             <h3>И затем, нажмите "<i>Начать</i>"</h3>
+        </div>
+        <div class="inst">
+            <h1>Чтобы переключаться между вопросами, вы можете использовать либо шарики, расположенные под вопросом,<br />либо кнопками «Предыдущий» и «Далее»</h3>
+        </div>
+        <div class="inst">
+            <h1>По завершению выполнения теста, нажмите на кнопку «Итоги», расположенную слева. </h3>
         </div>
         <div class="inst">
             <h1>Это вся инструкция.</h1>
             <h3>Удачной работы!</h3>
         </div>
         <div id="btns">
+            <button id="prevInstruction" disabled onclick="prevInstruction()" style="font-size: 1em;">Назад</button>
             <button id="nextInstruction" onclick="nextInstruction()" style="font-size: 1em;">Дальше</button>
             <button id="stopInstruction" onclick="changeInstruction(0)" style="font-size: 1em;">Завершить инструкцию</button>
         </div>
