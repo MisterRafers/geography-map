@@ -227,12 +227,6 @@ marquee {
     border-radius: 0 5px 5px 0;
 }
 
-@media all and (max-width: 1291px) {
-    #map {
-        width: 100% !important;
-    }
-}
-
 @media all and (max-height: 924px) and (min-width: 400px) {
     #map img, #map svg {
         /*width: 100%;*/
