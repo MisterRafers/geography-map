@@ -397,6 +397,7 @@ document.getElementById('summitBtn').addEventListener('click', () => {
 
     document.getElementById('grade').innerHTML = 'Оценка: ' + getGrade(correct / questionsAnswered.size);
 
+    Chart.defaults.font.size = 16;
     new Chart(ctx, {
         type: 'pie',
         data: {

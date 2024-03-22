@@ -10,6 +10,7 @@
 }
 
 #container {
+    width: max-content;
     filter: blur(var(--blur)) brightness(var(--brightness));
     pointer-events: var(--interactable);
     transition: 0.2s ease-in-out filter;
@@ -22,11 +23,15 @@
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
+
+    width: 100vw;
+    display: flex;
+    justify-content: center;
 }
 #map svg {
     position: absolute;
-    top: -2px;
-    left: 0;
+    /*top: -2px;
+    left: 0;*/
     /*width: 100%;*/
     /*height: 90vh;*/
     height: 95vh;
@@ -220,6 +225,12 @@ marquee {
     margin-left: -20px;
     background: var(--data-color-l);
     border-radius: 0 5px 5px 0;
+}
+
+@media all and (max-width: 1291px) {
+    #map {
+        width: max-content !important;
+    }
 }
 
 @media all and (max-height: 924px) and (min-width: 400px) {
@@ -451,7 +462,7 @@ button:focus {
     background: no-repeat url('../imgs/bg.jpg');
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: 100%;
     width: 100%;
     z-index: 100;
 
