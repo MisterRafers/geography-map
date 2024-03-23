@@ -242,6 +242,8 @@ Array.from(document.getElementsByClassName('close2')).forEach((val) => {
         document.body.style.overflow = '';
         questions = [];
         questionsAnswered = new Map();
+        document.getElementById('myChartContainer').removeChild(document.getElementById('myChart'));
+        document.getElementById('myChartContainer').innerHTML = '<canvas id="myChart" role="img" aria-label="My chart"></canvas>';
         if (document.querySelector('input[type=radio]:checked') != null) document.querySelector('input[type=radio]:checked').checked = false;
         questionID = 1;
         questionsCount = 0;
