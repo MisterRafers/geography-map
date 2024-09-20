@@ -188,7 +188,8 @@ for (let i = 0; i < document.getElementsByClassName('hoverable').length; i++) {
         //console.log(colvertize.convert(c, 'hsl', colvertize.gammaCorrection()));
         document.body.style.setProperty('--data-color-a', colvertize.convert(c, 'css-rgb', colvertize.gammaCorrection()));
 
-        document.getElementById('modal').style.display = 'block';
+        //document.getElementById('modal').style.display = 'block';
+	document.getElementById('modal').style.pointerEvents = 'auto';
 	document.getElementById('modal').style.opacity = '1';
         document.body.style.overflow = 'hidden';
         let idx = parseInt(document.getElementsByClassName('hoverable')[i].classList[0]) - 1;
@@ -506,7 +507,8 @@ function getSelectedRadio() {
 }
 
 function closeModal() {
-    document.getElementById('modal').style.display = 'none';
+    //document.getElementById('modal').style.display = 'none';
+    document.getElementById('modal').style.pointerEvents = 'none';
     document.getElementById('modal').style.opacity = '0';
     document.body.style.overflow = '';
 
